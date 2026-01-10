@@ -1,13 +1,580 @@
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/696294960a6913197c7d1e7c/1jekh8rdl';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Apex {Web} Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #dc2626;
+            --dark-red: #991b1b;
+            --light-red: #ef4444;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --light-gray: #2d2d2d;
+            --white: #ffffff;
+            --off-white: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--black);
+            box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--dark-gray);
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            border: 1px solid var(--primary-red);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--white);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-red);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            padding: 200px 2rem 120px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            animation: fadeInDown 1s;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--light-red);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--primary-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-red);
+        }
+
+        section {
+            padding: 100px 3rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+        }
+
+        #about {
+            background: var(--off-white);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border: 2px solid var(--primary-red);
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 2rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        #portfolio {
+            background: var(--off-white);
+        }
+
+        .portfolio-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid var(--primary-red);
+        }
+
+        .portfolio-info h3 {
+            color: var(--primary-red);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-link {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .benefits {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
+            color: var(--white);
+        }
+
+        .benefits .section-title {
+            color: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(220, 38, 38, 0.2);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary-red);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-btn {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 1rem;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--light-red);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .portfolio-item {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo-text">Apex <span>{Web}</span> Development</a>
+            <button class="mobile-menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#services">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#web-design">Web Design</a>
+                        <a href="#ecommerce">E-commerce</a>
+                        <a href="#seo">SEO</a>
+                        <a href="#social-media">Social Media</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#portfolio">Portfolio ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#online-stores">Online Stores</a>
+                    </div>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Apex {Web} Development</h1>
+        <p class="tagline">Marketing | E-commerce | Design</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="#services" class="btn btn-primary">Learn More</a>
+            <a href="#contact" class="btn btn-secondary">Hire Us</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Apex {Web} Development</h2>
+        <p class="section-subtitle">
+            We pride ourselves in creating modern websites. Here at Apex {Web} Development we follow the modern trend of mobile-first & responsive design, making sure everything works well and looks great on any device used to view it.
+        </p>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=500&fit=crop&q=80" alt="E-commerce" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>E-commerce</h3>
+                    <p>Are you ready to take your business to the next level? Let us help you set up your own online store and tap into the world of e-commerce.</p>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=500&fit=crop&q=80" alt="Web Design" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>Website Design</h3>
+                    <p>Looking to enhance your online presence with a professional and user-friendly website? Our team specializes in website design and development.</p>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=500&fit=crop&q=80" alt="SEO" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>SEO Analysis & Optimisation</h3>
+                    <p>Improve your website's search engine ranking and drive more organic traffic with our comprehensive SEO analysis and optimization services.</p>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=500&fit=crop&q=80" alt="Social Media" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>Social Media Marketing</h3>
+                    <p>Social media marketing is the key to expanding your brand's reach, engaging with your target audience, and driving traffic to your website.</p>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Online Stores We Built</h2>
+
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80" alt="Nima Lodge" class="portfolio-image">
+            <div class="portfolio-info">
+                <h3>Nima Lodge</h3>
+                <p>A Stylish & Secluded Getaway In Nature's Beauty. Escape To The Tranquility Of Nima Lodge Wilderness, A Premium And Sophisticated Retreat.</p>
+                <a href="https://www.nimalodge.com/" target="_blank" class="portfolio-link">Visit Nima Lodge →</a>
+            </div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-info">
+                <h3>Top Fragrances</h3>
+                <p>Top Fragrances is a wholesale perfume supplier that offers resellers superior quality products at low prices. Purchase, resale & Earn 100% profit.</p>
+                <a href="https://topfragrances.co.za/" target="_blank" class="portfolio-link">Visit Top Fragrances →</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop&q=80" alt="Top Fragrances" class="portfolio-image">
+        </div>
+
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop&q=80" alt="Her Closet" class="portfolio-image">
+            <div class="portfolio-info">
+                <h3>Her Closet</h3>
+                <p>Own & love exactly who you are with our curated collection of comfy ladies dresses, tops & leggings selected to help you achieve ageless elegance.</p>
+                <a href="https://herclosetsa.co.za/" target="_blank" class="portfolio-link">Visit Her Closet →</a>
+            </div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-info">
+                <h3>Perfume Oils</h3>
+                <p>Direct Importers and Distributors of Quality Perfume Oils and bottles. Perfume Oils SA is a Cape Town based company importing quality perfume oils from France.</p>
+                <a href="https://perfumeoilssa.myshopify.com" target="_blank" class="portfolio-link">Visit Perfume Oils →</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=600&fit=crop&q=80" alt="Perfume Oils" class="portfolio-image">
+        </div>
+
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop&q=80" alt="In Clover Living" class="portfolio-image">
+            <div class="portfolio-info">
+                <h3>In Clover Living</h3>
+                <p><em>In Clover Living</em> – live a life of ease and luxury. The brainchild of a daughter and her father, creating something extraordinary out of nothing.</p>
+                <a href="https://incloverliving.co.za/" target="_blank" class="portfolio-link">Visit In Clover Living →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <p class="section-subtitle">
+            Our team of developers will treat your project as though it's their own, thanks to the strong culture of ownership fostered in our company.
+        </p>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h4>Exceptional Website Benefits</h4>
+                <p>Enhance your brand's online reputation, stand out against your competitors, generate leads, enquiries, sales online.</p>
+            </div>
+
+            <div class="benefit-card">
+                <h4>Design the User Experience</h4>
+                <p>User Experience is perhaps the biggest part to the design and development of a website.</p>
+            </div>
+
+            <div class="benefit-card">
+                <h4>On Budget and On Time</h4>
+                <p>You are kept in the loop for the entire project life cycle, delivering your project on-time and on-point.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Let's Talk</h2>
+        <p class="section-subtitle">
+            We understand that every business is unique. Contact us today to discuss your specific requirements and goals.
+        </p>
+
+        <div>
+            <a href="mailto:apexwebdevelopmentza.agency.co@gmail.com" class="contact-btn">📧 Email Us</a>
+            <a href="https://wa.me/17829131269" target="_blank" class="contact-btn">📱 WhatsApp Chat</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="color: #888;">Copyright 2026 ~ Apex {Web} Development</p>
+    </footer>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/696294960a6913197c7d1e7c/1jekh8rdl';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
