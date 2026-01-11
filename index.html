@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Solutions | Apex {Web} Development</title>
+    <title>Home | Apex {Web} Development</title>
     <style>
         * {
             margin: 0;
@@ -33,11 +33,28 @@
             background: var(--off-white);
         }
 
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Header */
         header {
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
@@ -64,159 +81,426 @@
             transition: transform 0.3s ease;
         }
 
-        .back-btn {
-            background: var(--primary-red);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            font-weight: 700;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            display: inline-block;
+            position: relative;
         }
 
-        .back-btn:hover {
-            background: var(--light-red);
-            transform: translateY(-2px);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
         }
 
-        .hero-service {
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 240px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(220, 38, 38, 0.1);
+            padding-left: 25px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
             color: var(--white);
-            padding: 150px 2rem 100px;
+            padding: 180px 2rem 100px;
             text-align: center;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-service h1 {
-            font-size: 3.5rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://apexwebdevelopment.co.za/wp-content/uploads/2024/07/1_SwFB1o_k1LGprN-XRUZQ8w.webp') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
             margin-bottom: 1rem;
             font-weight: 800;
-            animation: fadeInUp 1s ease;
+            animation: fadeInDown 1s ease;
         }
 
-        .hero-service p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .content-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 2rem;
-        }
-
-        .service-detail {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-        }
-
-        .service-detail h2 {
-            color: var(--primary-red);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-detail h3 {
-            color: var(--black);
+        .hero .tagline {
             font-size: 1.8rem;
-            margin: 2rem 0 1rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
-        .service-detail p {
-            color: #4b5563;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-detail ul {
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-        }
-
-        .service-detail li {
-            color: #4b5563;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-        }
-
-        .service-detail li strong {
-            color: var(--primary-red);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-box {
-            background: var(--off-white);
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-red);
-        }
-
-        .feature-box h4 {
-            color: var(--primary-red);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
-            color: var(--white);
-            padding: 60px 2rem;
-            text-align: center;
+        .hero-image {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.9;
             border-radius: 20px;
-            margin: 3rem 0;
         }
 
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-btn {
-            background: var(--primary-red);
-            color: var(--white);
+        .btn {
             padding: 16px 45px;
-            border-radius: 50px;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
+            transition: all 0.4s ease;
             display: inline-block;
-            margin: 0 10px;
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-btn:hover {
-            background: var(--light-red);
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
         }
 
-        .cta-btn.secondary {
+        .btn-secondary {
             background: transparent;
+            color: var(--white);
             border: 3px solid var(--primary-red);
         }
 
-        .cta-btn.secondary:hover {
+        .btn-secondary:hover {
             background: var(--primary-red);
+            transform: translateY(-3px);
         }
 
+        /* Sections */
+        section {
+            padding: 100px 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 800;
+            color: var(--black);
+            animation: slideIn 0.8s ease;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+            color: #6b7280;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.5s ease;
+            animation: float 8s ease-in-out infinite;
+            border: 1px solid transparent;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        .service-card:nth-child(5) {
+            animation-delay: 4s;
+        }
+
+        .service-card:nth-child(6) {
+            animation-delay: 5s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(220, 38, 38, 0.2);
+            border: 1px solid var(--primary-red);
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-card-image {
+            transform: scale(1.1);
+        }
+
+        .service-card-content {
+            padding: 2rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-red);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title,
+        .contact .section-subtitle {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            transition: all 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .contact-card:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .contact-card:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            border-color: var(--primary-red);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .contact-card .response-time {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .contact-btn {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--light-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--white);
+        }
+
+        .review-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .review-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .review-card {
+            min-width: 350px;
+            background: var(--off-white);
+            padding: 2rem;
+            margin: 0 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .review-stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .review-platform {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* Footer */
         footer {
             background: var(--black);
             color: var(--white);
@@ -225,17 +509,66 @@
             border-top: 3px solid var(--primary-red);
         }
 
-        @media (max-width: 768px) {
-            .hero-service h1 {
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .service-detail {
-                padding: 2rem 1.5rem;
+            .hero .tagline {
+                font-size: 1.3rem;
             }
 
-            .feature-grid {
+            .service-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .portfolio-showcase {
+                grid-template-columns: 1fr !important;
+            }
+
+            .portfolio-showcase img {
+                height: 300px !important;
             }
         }
     </style>
@@ -243,120 +576,290 @@
 <body>
     <header>
         <nav>
-            <a href="index.html">
+            <a href="#home">
                 <img src="https://apexwebdevelopment.co.za/wp-content/uploads/2021/09/logo_transparent-1.png" alt="Apex Web Development Logo" class="logo">
             </a>
-            <a href="index.html" class="back-btn">← Back to Home</a>
+            <button class="mobile-menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="service-web-design.html">Web Design</a>
+                        <a href="service-ecommerce.html">E-commerce</a>
+                        <a href="service-seo.html">SEO</a>
+                        <a href="service-social-media.html">Social Media</a>
+                        <a href="service-api-fixes.html">API & Technical Fixes</a>
+                        <a href="service-mentoring.html">Merchant Mentoring</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="portfolio.html">Portfolio ▾</a>
+                    <div class="dropdown-content">
+                        <a href="portfolio-stores.html">Online Stores</a>
+                        <a href="portfolio-websites.html">Websites</a>
+                        <a href="portfolio-social.html">Social Media</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="hero-service">
-        <h1>E-commerce Solutions</h1>
-        <p>Transform your business with a powerful online store that drives sales 24/7</p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Apex {Web} Development</h1>
+            <p class="tagline">Marketing | E-commerce | Design</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="#services" class="btn btn-primary">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Hire Us</a>
+            </div>
+            <img src="https://apexwebdevelopment.co.za/wp-content/uploads/2024/07/1_SwFB1o_k1LGprN-XRUZQ8w.webp" alt="Web Development" class="hero-image">
+        </div>
     </section>
 
-    <div class="content-section">
-        <div class="service-detail">
-            <h2>Build Your Dream Online Store</h2>
-            <p>Are you ready to take your business to the next level? In today's digital age, having an online store is no longer optional—it's essential. Let us help you set up your own e-commerce platform and tap into the unlimited potential of online selling.</p>
+    <section id="about">
+        <h2 class="section-title">Apex {Web} Development</h2>
+        <p class="section-subtitle">
+            We pride ourselves in creating modern websites with over <strong>10+ years of experience</strong>. Here at Apex {Web} Development we follow the modern trend of mobile-first & responsive design, making sure everything works well and looks great on any device used to view it.
+        </p>
+        <p class="section-subtitle">
+            Our expert team has successfully worked with multiple platforms including <strong>Shopify, WordPress, Wix, Etsy, WooCommerce, Squarespace, BigCommerce</strong>, and many more. We bring extensive knowledge in custom website development, platform migrations, and technical optimizations to help your business thrive online.
+        </p>
+    </section>
 
-            <h3>What We Offer</h3>
-            <p>Our comprehensive e-commerce solutions are designed to get your business online quickly and efficiently, with all the features you need to succeed:</p>
-
-            <div class="feature-grid">
-                <div class="feature-box">
-                    <h4>🛒 Custom Store Design</h4>
-                    <p>Beautiful, user-friendly designs that reflect your brand and convert visitors into customers.</p>
-                </div>
-
-                <div class="feature-box">
-                    <h4>💳 Secure Payment Integration</h4>
-                    <p>Multiple payment gateway options including PayPal, Stripe, credit cards, and local payment methods.</p>
-                </div>
-
-                <div class="feature-box">
-                    <h4>📦 Inventory Management</h4>
-                    <p>Easy-to-use systems to track stock levels, manage variants, and automate reordering.</p>
-                </div>
-
-                <div class="feature-box">
-                    <h4>🚚 Shipping Integration</h4>
-                    <p>Connect with major shipping carriers for real-time rates and automated label printing.</p>
-                </div>
-
-                <div class="feature-box">
-                    <h4>📱 Mobile Responsive</h4>
-                    <p>Your store will look perfect on all devices—desktop, tablet, and mobile.</p>
-                </div>
-
-                <div class="feature-box">
-                    <h4>🔒 SSL Security</h4>
-                    <p>Bank-level encryption to protect your customers' sensitive information.</p>
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=500&fit=crop&q=80" alt="E-commerce" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>E-commerce Solutions</h3>
+                    <p>Ready to take your business to the next level? Let us help you set up your own online store and tap into the world of e-commerce with secure payment gateways and inventory management.</p>
+                    <a href="service-ecommerce.html" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
-            <h3>Platforms We Work With</h3>
-            <p>We're experts in all major e-commerce platforms and can recommend the best solution for your specific needs:</p>
-            <ul>
-                <li><strong>Shopify:</strong> Perfect for businesses of all sizes with powerful built-in features and thousands of apps</li>
-                <li><strong>WooCommerce (WordPress):</strong> Highly customizable and great for content-rich stores</li>
-                <li><strong>BigCommerce:</strong> Enterprise-level features for scaling businesses</li>
-                <li><strong>Wix eCommerce:</strong> User-friendly platform with beautiful templates</li>
-                <li><strong>Etsy:</strong> Ideal for handmade, vintage, and craft items</li>
-                <li><strong>Custom Solutions:</strong> Tailored e-commerce platforms built from scratch for unique requirements</li>
-            </ul>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=500&fit=crop&q=80" alt="Web Design" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>Website Design</h3>
+                    <p>Enhance your online presence with a professional and user-friendly website. Our team specializes in modern, responsive website design and development that converts visitors into customers.</p>
+                    <a href="service-web-design.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
 
-            <h3>Why Choose E-commerce?</h3>
-            <ul>
-                <li><strong>Sell 24/7:</strong> Your store never closes—generate revenue even while you sleep</li>
-                <li><strong>Reach Global Markets:</strong> Break geographical barriers and sell to customers worldwide</li>
-                <li><strong>Lower Overhead:</strong> Significantly reduce costs compared to physical retail locations</li>
-                <li><strong>Data Insights:</strong> Track customer behavior and make data-driven decisions</li>
-                <li><strong>Scale Easily:</strong> Grow your product catalog and customer base without major infrastructure changes</li>
-                <li><strong>Marketing Integration:</strong> Seamlessly connect with email marketing, social media, and advertising platforms</li>
-            </ul>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=500&fit=crop&q=80" alt="SEO" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>SEO Analysis & Optimisation</h3>
+                    <p>Improve your website's search engine ranking and drive more organic traffic with our comprehensive SEO analysis, keyword research, and optimization services.</p>
+                    <a href="service-seo.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
 
-            <h3>Our E-commerce Process</h3>
-            <p><strong>1. Discovery & Planning:</strong> We learn about your business, products, target audience, and goals to create a customized strategy.</p>
-            
-            <p><strong>2. Platform Selection:</strong> Based on your needs and budget, we recommend the ideal e-commerce platform.</p>
-            
-            <p><strong>3. Design & Development:</strong> Our team creates a stunning, user-friendly store that showcases your products beautifully.</p>
-            
-            <p><strong>4. Product Setup:</strong> We help you upload products, configure variants, set pricing, and optimize product pages for conversions.</p>
-            
-            <p><strong>5. Payment & Shipping:</strong> Integration of secure payment gateways and shipping solutions tailored to your requirements.</p>
-            
-            <p><strong>6. Testing & Launch:</strong> Thorough testing of all functionality before your grand opening.</p>
-            
-            <p><strong>7. Training & Support:</strong> Complete training on managing your store and ongoing support as you grow.</p>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=500&fit=crop&q=80" alt="Social Media" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>Social Media Marketing</h3>
+                    <p>Social media marketing is the key to expanding your brand's reach, engaging with your target audience, and driving qualified traffic to your website for increased conversions.</p>
+                    <a href="service-social-media.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
 
-            <h3>Additional Services</h3>
-            <ul>
-                <li>Product photography and image editing</li>
-                <li>Copywriting for product descriptions</li>
-                <li>SEO optimization for better search rankings</li>
-                <li>Email marketing setup and automation</li>
-                <li>Social media integration</li>
-                <li>Analytics and reporting setup</li>
-                <li>Abandoned cart recovery systems</li>
-                <li>Customer loyalty programs</li>
-                <li>Multi-language and multi-currency support</li>
-            </ul>
-        </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=500&fit=crop&q=80" alt="API Integration" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>API & Technical Fixes</h3>
+                    <p>Experiencing technical issues or API integration problems? We specialize in debugging, fixing broken websites, API integrations, payment gateway issues, database errors, and complex technical challenges.</p>
+                    <a href="service-api-fixes.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
 
-        <div class="cta-section">
-            <h2>Ready to Start Selling Online?</h2>
-            <p>Join thousands of successful merchants who have transformed their businesses with our e-commerce solutions.</p>
-            <div>
-                <a href="contact.html" class="cta-btn">Get Started Today</a>
-                <a href="index.html" class="cta-btn secondary">Learn More Services</a>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=500&fit=crop&q=80" alt="Merchant Mentoring" class="service-card-image">
+                <div class="service-card-content">
+                    <h3>Merchant Mentoring & Education</h3>
+                    <p>Get expert guidance to grow your online business. We provide personalized mentoring, training sessions, and educational resources to help merchants succeed in e-commerce and digital marketing.</p>
+                    <a href="service-mentoring.html" class="btn btn-primary">Learn More</a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="portfolio" style="background: var(--off-white);">
+        <h2 class="section-title">Online Stores We Built</h2>
+        <p class="section-subtitle">Real projects, real results - see our work in action</p>
+
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80" alt="Nima Lodge" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <div>
+                    <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Nima Lodge</h3>
+                    <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">A Stylish & Secluded Getaway In Nature's Beauty. Escape To The Tranquility Of Nima Lodge Wilderness, A Premium And Sophisticated Retreat.</p>
+                    <a href="https://www.nimalodge.com/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Nima Lodge →</a>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+                <div>
+                    <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Top Fragrances</h3>
+                    <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Top Fragrances is a wholesale perfume supplier that offers resellers superior quality products at low prices. Purchase, resale & Earn 100% profit.</p>
+                    <a href="https://topfragrances.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Top Fragrances →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop&q=80" alt="Top Fragrances" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop&q=80" alt="Her Closet" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <div>
+                    <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Her Closet</h3>
+                    <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Own & love exactly who you are with our curated collection of comfy ladies dresses, tops & leggings selected to help you achieve ageless elegance.</p>
+                    <a href="https://herclosetsa.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Her Closet →</a>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+                <div>
+                    <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Perfume Oils</h3>
+                    <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Direct Importers and Distributors of Quality Perfume Oils and bottles. Perfume Oils SA is a Cape Town based company importing quality perfume oils from France.</p>
+                    <a href="https://perfumeoilssa.myshopify.com" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Perfume Oils →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=600&fit=crop&q=80" alt="Perfume Oils" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 3rem; align-items: center;" class="portfolio-showcase">
+                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop&q=80" alt="In Clover Living" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <div>
+                    <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">In Clover Living</h3>
+                    <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;"><em>In Clover Living</em> — live a life of ease and luxury. The brainchild of a daughter and her father, creating something extraordinary out of nothing.</p>
+                    <a href="https://incloverliving.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit In Clover Living →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Trusted by merchants across multiple platforms</p>
+        
+        <div class="review-slider">
+            <div class="review-track">
+                <!-- First set of reviews -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
+                    <p class="review-author">Sarah Johnson</p>
+                    <p class="review-platform">Shopify Store Owner</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Best web development team I've worked with. They fixed all our API issues and our WordPress site runs flawlessly now!"</p>
+                    <p class="review-author">Michael Chen</p>
+                    <p class="review-platform">WordPress Business</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to Shopify seamlessly. Highly recommend!"</p>
+                    <p class="review-author">Emily Rodriguez</p>
+                    <p class="review-platform">E-commerce Entrepreneur</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Their SEO optimization brought us to page 1 of Google! Our organic traffic tripled. Worth every penny."</p>
+                    <p class="review-author">David Thompson</p>
+                    <p class="review-platform">Online Retailer</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Apex handled our complex API integration with multiple payment gateways perfectly. Technical expertise is top-notch!"</p>
+                    <p class="review-author">Lisa Patel</p>
+                    <p class="review-platform">SaaS Founder</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"They built our Etsy and Shopify stores from scratch. Beautiful design and everything works perfectly. Amazing team!"</p>
+                    <p class="review-author">James Wilson</p>
+                    <p class="review-platform">Multi-Platform Seller</p>
+                </div>
+
+                <!-- Duplicate set for seamless loop -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
+                    <p class="review-author">Sarah Johnson</p>
+                    <p class="review-platform">Shopify Store Owner</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Best web development team I've worked with. They fixed all our API issues and our WordPress site runs flawlessly now!"</p>
+                    <p class="review-author">Michael Chen</p>
+                    <p class="review-platform">WordPress Business</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to Shopify seamlessly. Highly recommend!"</p>
+                    <p class="review-author">Emily Rodriguez</p>
+                    <p class="review-platform">E-commerce Entrepreneur</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Their SEO optimization brought us to page 1 of Google! Our organic traffic tripled. Worth every penny."</p>
+                    <p class="review-author">David Thompson</p>
+                    <p class="review-platform">Online Retailer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Let's Talk</h2>
+        <p class="section-subtitle">
+            We understand that every business is unique. Contact us today to discuss your specific requirements and goals.
+        </p>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>💬 Live Chat Support</h3>
+                <p class="response-time">Response Time: Instant</p>
+                <p style="margin-bottom: 1.5rem;">Get immediate assistance with our live chat support. Chat with us now for real-time help!</p>
+                <button onclick="if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize){Tawk_API.maximize();} else{setTimeout(function(){if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize){Tawk_API.maximize();}}, 2000);}" class="contact-btn" style="border: none; cursor: pointer;">Start Live Chat</button>
+            </div>
+
+            <div class="contact-card">
+                <h3>📱 WhatsApp</h3>
+                <p class="response-time">Response Time: 30 min - 1 hour</p>
+                <p style="margin-bottom: 1.5rem;">Quick questions? Message us on WhatsApp for fast responses during business hours.</p>
+                <a href="https://wa.me/17829131269" target="_blank" class="contact-btn">Chat on WhatsApp</a>
+            </div>
+
+            <div class="contact-card">
+                <h3>📧 Email Us</h3>
+                <p class="response-time">Response Time: 12-24 hours</p>
+                <p style="margin-bottom: 1.5rem;">For detailed inquiries and project proposals, send us an email.</p>
+                <a href="mailto:apexwebdevelopmentza.agency.co@gmail.com" class="contact-btn">Send Email</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p style="color: #888;">Copyright 2026 ~ Apex {Web} Development</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p style="color: #888; margin-top: 1rem;">Copyright 2026 ~ Apex {Web} Development</p>
         <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">10+ Years of Excellence in Web Development</p>
     </footer>
 
@@ -374,4 +877,3 @@
     </script>
     <!--End of Tawk.to Script-->
 </body>
-</html>
