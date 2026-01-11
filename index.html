@@ -33,7 +33,6 @@
             background: var(--off-white);
         }
 
-        /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -54,7 +53,6 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Header */
         header {
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
@@ -165,7 +163,6 @@
             color: var(--primary-red);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
             color: var(--white);
@@ -214,6 +211,7 @@
             animation: float 6s ease-in-out infinite;
             opacity: 0.9;
             border-radius: 20px;
+            width: 100%;
         }
 
         .btn {
@@ -268,7 +266,6 @@
             transform: translateY(-3px);
         }
 
-        /* Sections */
         section {
             padding: 100px 3rem;
             animation: fadeInUp 0.8s ease;
@@ -292,13 +289,11 @@
             color: #6b7280;
         }
 
-        /* About Section */
         #about {
             background: var(--white);
             box-shadow: 0 10px 40px rgba(0,0,0,0.05);
         }
 
-        /* Service Grid */
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -331,10 +326,6 @@
 
         .service-card:nth-child(5) {
             animation-delay: 4s;
-        }
-
-        .service-card:nth-child(6) {
-            animation-delay: 5s;
         }
 
         .service-card:hover {
@@ -371,7 +362,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Contact Section */
         .contact {
             background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
             color: var(--white);
@@ -437,6 +427,8 @@
             font-weight: 700;
             display: inline-block;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .contact-btn:hover {
@@ -445,7 +437,6 @@
             box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
         }
 
-        /* Reviews Section */
         .reviews {
             background: var(--white);
         }
@@ -500,7 +491,6 @@
             color: #9ca3af;
         }
 
-        /* Footer */
         footer {
             background: var(--black);
             color: var(--white);
@@ -528,7 +518,27 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive */
+        .portfolio-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .portfolio-showcase img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-showcase img:hover {
+            transform: scale(1.05);
+        }
+
         @media (max-width: 968px) {
             .nav-links {
                 display: none;
@@ -586,20 +596,19 @@
                 <li class="dropdown">
                     <a href="#services">Services ▾</a>
                     <div class="dropdown-content">
-                        <a href="service-web-design.html">Web Design</a>
-                        <a href="service-ecommerce.html">E-commerce</a>
-                        <a href="service-seo.html">SEO</a>
-                        <a href="service-social-media.html">Social Media</a>
-                        <a href="service-api-fixes.html">API & Technical Fixes</a>
-                        <a href="service-mentoring.html">Merchant Mentoring</a>
+                        <a href="#web-design">Web Design</a>
+                        <a href="#ecommerce">E-commerce</a>
+                        <a href="#seo">SEO</a>
+                        <a href="#social-media">Social Media</a>
+                        <a href="#api-fixes">API & Technical Fixes</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#portfolio">Portfolio ▾</a>
                     <div class="dropdown-content">
-                        <a href="portfolio-stores.html">Online Stores</a>
-                        <a href="portfolio-websites.html">Websites</a>
-                        <a href="portfolio-social.html">Social Media</a>
+                        <a href="#portfolio">Online Stores</a>
+                        <a href="#portfolio">Websites</a>
+                        <a href="#portfolio">Social Media</a>
                     </div>
                 </li>
                 <li><a href="#contact">Contact</a></li>
@@ -637,7 +646,7 @@
                 <div class="service-card-content">
                     <h3>E-commerce Solutions</h3>
                     <p>Ready to take your business to the next level? Let us help you set up your own online store and tap into the world of e-commerce with secure payment gateways and inventory management.</p>
-                    <a href="service-ecommerce.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
@@ -646,7 +655,7 @@
                 <div class="service-card-content">
                     <h3>Website Design</h3>
                     <p>Enhance your online presence with a professional and user-friendly website. Our team specializes in modern, responsive website design and development that converts visitors into customers.</p>
-                    <a href="service-web-design.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
@@ -655,7 +664,7 @@
                 <div class="service-card-content">
                     <h3>SEO Analysis & Optimisation</h3>
                     <p>Improve your website's search engine ranking and drive more organic traffic with our comprehensive SEO analysis, keyword research, and optimization services.</p>
-                    <a href="service-seo.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
@@ -664,7 +673,7 @@
                 <div class="service-card-content">
                     <h3>Social Media Marketing</h3>
                     <p>Social media marketing is the key to expanding your brand's reach, engaging with your target audience, and driving qualified traffic to your website for increased conversions.</p>
-                    <a href="service-social-media.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
@@ -673,7 +682,7 @@
                 <div class="service-card-content">
                     <h3>API & Technical Fixes</h3>
                     <p>Experiencing technical issues or API integration problems? We specialize in debugging, fixing broken websites, API integrations, payment gateway issues, database errors, and complex technical challenges.</p>
-                    <a href="service-api-fixes.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
 
@@ -682,7 +691,7 @@
                 <div class="service-card-content">
                     <h3>Merchant Mentoring & Education</h3>
                     <p>Get expert guidance to grow your online business. We provide personalized mentoring, training sessions, and educational resources to help merchants succeed in e-commerce and digital marketing.</p>
-                    <a href="service-mentoring.html" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -693,48 +702,48 @@
         <p class="section-subtitle">Real projects, real results - see our work in action</p>
 
         <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80" alt="Nima Lodge" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="portfolio-showcase">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80" alt="Nima Lodge">
                 <div>
                     <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Nima Lodge</h3>
                     <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">A Stylish & Secluded Getaway In Nature's Beauty. Escape To The Tranquility Of Nima Lodge Wilderness, A Premium And Sophisticated Retreat.</p>
-                    <a href="https://www.nimalodge.com/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Nima Lodge →</a>
+                    <a href="https://www.nimalodge.com/" target="_blank" class="btn btn-primary">Visit Nima Lodge →</a>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+            <div class="portfolio-showcase">
                 <div>
                     <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Top Fragrances</h3>
                     <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Top Fragrances is a wholesale perfume supplier that offers resellers superior quality products at low prices. Purchase, resale & Earn 100% profit.</p>
-                    <a href="https://topfragrances.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Top Fragrances →</a>
+                    <a href="https://topfragrances.co.za/" target="_blank" class="btn btn-primary">Visit Top Fragrances →</a>
                 </div>
-                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop&q=80" alt="Top Fragrances" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop&q=80" alt="Top Fragrances">
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop&q=80" alt="Her Closet" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="portfolio-showcase">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop&q=80" alt="Her Closet">
                 <div>
                     <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Her Closet</h3>
                     <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Own & love exactly who you are with our curated collection of comfy ladies dresses, tops & leggings selected to help you achieve ageless elegance.</p>
-                    <a href="https://herclosetsa.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Her Closet →</a>
+                    <a href="https://herclosetsa.co.za/" target="_blank" class="btn btn-primary">Visit Her Closet →</a>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: center;" class="portfolio-showcase">
+            <div class="portfolio-showcase">
                 <div>
                     <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">Perfume Oils</h3>
                     <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;">Direct Importers and Distributors of Quality Perfume Oils and bottles. Perfume Oils SA is a Cape Town based company importing quality perfume oils from France.</p>
-                    <a href="https://perfumeoilssa.myshopify.com" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit Perfume Oils →</a>
+                    <a href="https://perfumeoilssa.myshopify.com" target="_blank" class="btn btn-primary">Visit Perfume Oils →</a>
                 </div>
-                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=600&fit=crop&q=80" alt="Perfume Oils" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=600&fit=crop&q=80" alt="Perfume Oils">
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 3rem; align-items: center;" class="portfolio-showcase">
-                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop&q=80" alt="In Clover Living" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="portfolio-showcase" style="margin-bottom: 3rem;">
+                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop&q=80" alt="In Clover Living">
                 <div>
                     <h3 style="color: var(--primary-red); font-size: 2.2rem; margin-bottom: 1rem;">In Clover Living</h3>
                     <p style="color: #6b7280; line-height: 1.8; margin-bottom: 1.5rem;"><em>In Clover Living</em> — live a life of ease and luxury. The brainchild of a daughter and her father, creating something extraordinary out of nothing.</p>
-                    <a href="https://incloverliving.co.za/" target="_blank" style="background: var(--primary-red); color: var(--white); padding: 14px 35px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(220, 38, 38, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">Visit In Clover Living →</a>
+                    <a href="https://incloverliving.co.za/" target="_blank" class="btn btn-primary">Visit In Clover Living →</a>
                 </div>
             </div>
         </div>
@@ -746,7 +755,6 @@
         
         <div class="review-slider">
             <div class="review-track">
-                <!-- First set of reviews -->
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
@@ -763,117 +771,4 @@
 
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to Shopify seamlessly. Highly recommend!"</p>
-                    <p class="review-author">Emily Rodriguez</p>
-                    <p class="review-platform">E-commerce Entrepreneur</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Their SEO optimization brought us to page 1 of Google! Our organic traffic tripled. Worth every penny."</p>
-                    <p class="review-author">David Thompson</p>
-                    <p class="review-platform">Online Retailer</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Apex handled our complex API integration with multiple payment gateways perfectly. Technical expertise is top-notch!"</p>
-                    <p class="review-author">Lisa Patel</p>
-                    <p class="review-platform">SaaS Founder</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"They built our Etsy and Shopify stores from scratch. Beautiful design and everything works perfectly. Amazing team!"</p>
-                    <p class="review-author">James Wilson</p>
-                    <p class="review-platform">Multi-Platform Seller</p>
-                </div>
-
-                <!-- Duplicate set for seamless loop -->
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
-                    <p class="review-author">Sarah Johnson</p>
-                    <p class="review-platform">Shopify Store Owner</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Best web development team I've worked with. They fixed all our API issues and our WordPress site runs flawlessly now!"</p>
-                    <p class="review-author">Michael Chen</p>
-                    <p class="review-platform">WordPress Business</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to Shopify seamlessly. Highly recommend!"</p>
-                    <p class="review-author">Emily Rodriguez</p>
-                    <p class="review-platform">E-commerce Entrepreneur</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Their SEO optimization brought us to page 1 of Google! Our organic traffic tripled. Worth every penny."</p>
-                    <p class="review-author">David Thompson</p>
-                    <p class="review-platform">Online Retailer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="section-title">Let's Talk</h2>
-        <p class="section-subtitle">
-            We understand that every business is unique. Contact us today to discuss your specific requirements and goals.
-        </p>
-
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>💬 Live Chat Support</h3>
-                <p class="response-time">Response Time: Instant</p>
-                <p style="margin-bottom: 1.5rem;">Get immediate assistance with our live chat support. Chat with us now for real-time help!</p>
-                <button onclick="if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize){Tawk_API.maximize();} else{setTimeout(function(){if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize){Tawk_API.maximize();}}, 2000);}" class="contact-btn" style="border: none; cursor: pointer;">Start Live Chat</button>
-            </div>
-
-            <div class="contact-card">
-                <h3>📱 WhatsApp</h3>
-                <p class="response-time">Response Time: 30 min - 1 hour</p>
-                <p style="margin-bottom: 1.5rem;">Quick questions? Message us on WhatsApp for fast responses during business hours.</p>
-                <a href="https://wa.me/17829131269" target="_blank" class="contact-btn">Chat on WhatsApp</a>
-            </div>
-
-            <div class="contact-card">
-                <h3>📧 Email Us</h3>
-                <p class="response-time">Response Time: 12-24 hours</p>
-                <p style="margin-bottom: 1.5rem;">For detailed inquiries and project proposals, send us an email.</p>
-                <a href="mailto:apexwebdevelopmentza.agency.co@gmail.com" class="contact-btn">Send Email</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p style="color: #888; margin-top: 1rem;">Copyright 2026 ~ Apex {Web} Development</p>
-        <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">10+ Years of Excellence in Web Development</p>
-    </footer>
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/696264960a6913197c7d1e7c/1jekh8rdl';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
-</body>
+                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to
