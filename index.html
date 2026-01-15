@@ -360,9 +360,9 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 3rem auto;
         }
 
@@ -730,7 +730,7 @@
                 <h3>💬 Live Chat Support</h3>
                 <p class="response-time">Response Time: Immediately</p>
                 <p style="margin-bottom: 1.5rem; color: #d1d5db;">Get immediate assistance with our live chat support. Chat with us now for real-time help!</p>
-                <button onclick="if(window.Tawk_API && window.Tawk_API.maximize){window.Tawk_API.maximize();}else{alert('Chat is loading, please wait a moment...');}" class="contact-btn">Start Live Chat</button>
+                <button onclick="openTawkChat()" class="contact-btn">Start Live Chat</button>
             </div>
 
             <div class="contact-card">
@@ -772,13 +772,29 @@
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/696294960a6913197c7d1e7c/1jekh8rdl';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/696294960a6913197c7d1e7c/1jekh8rdl';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
     })();
+    
+    // Function to open Tawk.to chat
+    function openTawkChat() {
+        if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
+            Tawk_API.maximize();
+        } else {
+            // Wait a bit and try again if not loaded yet
+            setTimeout(function() {
+                if(typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
+                    Tawk_API.maximize();
+                } else {
+                    alert('Chat is still loading, please wait a moment and try again.');
+                }
+            }, 1000);
+        }
+    }
     </script>
     <!--End of Tawk.to Script-->
 </body>
