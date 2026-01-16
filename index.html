@@ -347,6 +347,60 @@
             margin-bottom: 1.5rem;
         }
 
+        .reviews {
+            background: var(--white);
+        }
+
+        .review-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .review-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .review-card {
+            min-width: 350px;
+            background: var(--off-white);
+            padding: 2rem;
+            margin: 0 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .review-stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .review-platform {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
         .contact {
             background: linear-gradient(135deg, var(--black) 0%, var(--dark-red) 100%);
             color: var(--white);
@@ -411,60 +465,6 @@
             background: var(--light-red);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-        }
-
-        .reviews {
-            background: var(--white);
-        }
-
-        .review-slider {
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .review-track {
-            display: flex;
-            animation: scroll 30s linear infinite;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .review-card {
-            min-width: 350px;
-            background: var(--off-white);
-            padding: 2rem;
-            margin: 0 1rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--primary-red);
-        }
-
-        .review-stars {
-            color: #fbbf24;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .review-text {
-            color: #4b5563;
-            margin-bottom: 1rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .review-author {
-            font-weight: 700;
-            color: var(--primary-red);
-        }
-
-        .review-platform {
-            font-size: 0.9rem;
-            color: #9ca3af;
         }
 
         footer {
@@ -711,6 +711,13 @@
             <div class="review-track">
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
+                    <p class="review-author">Sarah Johnson</p>
+                    <p class="review-platform">Shopify Store Owner</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
                     <p class="review-text">"Best web development team I've worked with. They fixed all our API issues and our WordPress site runs flawlessly now!"</p>
                     <p class="review-author">Michael Chen</p>
                     <p class="review-platform">WordPress Business</p>
@@ -797,54 +804,3 @@
     }
     </script>
     <!--End of Tawk.to Script-->
-</body>
-</html class="review-stars">★★★★★</div>
-                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
-                    <p class="review-author">Sarah Johnson</p>
-                    <p class="review-platform">Shopify Store Owner</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Best web development team I've worked with. They fixed all our API issues and our WordPress site runs flawlessly now!"</p>
-                    <p class="review-author">Michael Chen</p>
-                    <p class="review-platform">WordPress Business</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Professional, responsive, and incredibly skilled. They migrated our entire Wix site to Shopify seamlessly. Highly recommend!"</p>
-                    <p class="review-author">Emily Rodriguez</p>
-                    <p class="review-platform">E-commerce Entrepreneur</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Their SEO optimization brought us to page 1 of Google! Our organic traffic tripled. Worth every penny."</p>
-                    <p class="review-author">David Thompson</p>
-                    <p class="review-platform">Online Retailer</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Apex handled our complex API integration with multiple payment gateways perfectly. Technical expertise is top-notch!"</p>
-                    <p class="review-author">Lisa Patel</p>
-                    <p class="review-platform">SaaS Founder</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"They built our Etsy and Shopify stores from scratch. Beautiful design and everything works perfectly. Amazing team!"</p>
-                    <p class="review-author">James Wilson</p>
-                    <p class="review-platform">Multi-Platform Seller</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Apex transformed our Shopify store completely! Sales increased by 150% in just 3 months. Their attention to detail is unmatched."</p>
-                    <p class="review-author">Sarah Johnson</p>
-                    <p class="review-platform">Shopify Store Owner</p>
-                </div>
-
-                <div class="review-card">
-                    <div
